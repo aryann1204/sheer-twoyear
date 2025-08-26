@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Our 2-Year Anniversary Date Night</title>
+    <meta name="description" content="A cozy, cute plan for our 2-year anniversary date night." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --pink-50: #fff7fa;
+            --pink-100: #ffe6ee;
+            --pink-200: #ffd1e0;
+            --pink-300: #ffb8ce;
+            --rose-400: #e58aa4;
+            --rose-500: #d96b8a;
+            --rose-gold: #b76e79;
+            --cream: #fffaf5;
+            --text: #573b44;
+            --shadow: 0 10px 24px rgba(217, 107, 138, 0.15);
+            --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.06);
+            --radius: 18px;
+            --radius-lg: 22px;
+            --maxw: 1000px;
+        }
+
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: linear-gradient(180deg, var(--cream), var(--pink-50) 40%, var(--cream));
+            line-height: 1.6;
+        }
+        a { color: var(--rose-500); text-decoration: none; }
+        a:hover { color: var(--rose-gold); }
+        img { max-width: 100%; display: block; }
+
+        /* Sticky navbar with progress dots */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: saturate(140%) blur(8px);
+            background: rgba(255, 250, 245, 0.75);
+            border-bottom: 1px solid rgba(183, 110, 121, 0.15);
+        }
+        .nav-inner {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 20px;
+        }
+        .brand {
+            font-family: "Dancing Script", cursive;
+            font-size: 22px;
+            color: var(--rose-500);
+            white-space: nowrap;
+        }
+        .dots {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            justify-content: center;
+        }
+        .dot-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background: var(--pink-200);
+            border: 2px solid var(--rose-400);
+            box-shadow: var(--shadow-soft);
+            transition: transform 180ms ease, background 180ms ease;
+        }
+        .dot-btn[aria-current="true"], .dot-btn:hover, .dot-btn:focus-visible {
+            background: var(--rose-500);
+            transform: translateY(-1px);
+            outline: none;
+        }
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            background: radial-gradient(1200px 600px at 50% -200px, var(--pink-100), var(--cream));
+            padding: 64px 20px 48px;
+            overflow: hidden;
+        }
+        .hero-inner { max-width: var(--maxw); margin: 0 auto; text-align: center; }
+        .title {
+            font-family: "Dancing Script", cursive;
+            font-size: clamp(36px, 6vw, 60px);
+            margin: 0 0 6px 0;
+            color: var(--rose-500);
+            text-shadow: 0 2px 0 rgba(255,255,255,0.6);
+        }
+        .subtitle { font-size: 18px; margin: 0; color: #7a5861; }
+        .note { font-size: 14px; color: #8d6a73; margin-top: 6px; }
+
+        /* Floating hearts */
+        .hearts { position: absolute; inset: 0; pointer-events: none; }
+        .heart {
+            position: absolute;
+            width: 14px; height: 14px;
+            opacity: 0.9;
+            filter: drop-shadow(0 4px 8px rgba(217, 107, 138, 0.18));
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.9); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-160px) scale(1.15); opacity: 0; }
+        }
+
+        /* Sections */
+        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 26px 20px 60px; }
+        section { margin: 24px 0; }
+        .section-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+            border: 1px solid rgba(217, 107, 138, 0.12);
+            position: relative;
+        }
+        .section-card:nth-of-type(even) { background: var(--pink-50); }
+        .section-card:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(217, 107, 138, 0.18); }
+
+        .section-inner {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 20px;
+        }
+        .section-body { padding: 26px; }
+        .section-kicker { font-size: 14px; color: #8d6a73; letter-spacing: 0.3px; }
+        .section-title { font-size: 22px; margin: 6px 0 10px; display: flex; align-items: center; gap: 10px; }
+        .icon { font-size: 20px; }
+        .section-desc p { margin: 8px 0; }
+
+        .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #ffe7ef, #ffd6e5);
+            color: #7a4454;
+            border: 1px solid rgba(183, 110, 121, 0.35);
+            box-shadow: 0 8px 16px rgba(183, 110, 121, 0.15);
+            transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(183, 110, 121, 0.25); }
+        .btn:focus-visible { outline: 3px solid rgba(217, 107, 138, 0.45); outline-offset: 2px; }
+
+        .section-image {
+            position: relative;
+            min-height: 220px;
+            background: linear-gradient(120deg, var(--pink-100), var(--cream));
+        }
+        .section-image img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+
+        /* Hour 4 split layout */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .split .panel {
+            background: white;
+            border-radius: var(--radius);
+            border: 1px solid rgba(217, 107, 138, 0.12);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .panel-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+        .panel-title { font-size: 18px; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
+        .panel-image { background: var(--pink-50); height: 230px; overflow: hidden; }
+        .panel-image img { width: 100%; height: 100%; object-fit: cover; }
+        /* Hour 4 wants full images (no crop) */
+        .is-split .panel-image { display: flex; align-items: center; justify-content: center; }
+        .is-split .panel-image img { object-fit: contain; }
+
+        /* Hour 6 rows */
+        .rows { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        /* Panels stack vertically, but inside each panel show image and text side-by-side */
+        .rows .panel { display: grid; grid-template-columns: 1fr 1.2fr; align-items: stretch; }
+        .rows .panel .panel-image { height: 240px; }
+        .rows .panel .panel-image img { object-fit: contain; background: var(--pink-50); }
+
+        /* Footer */
+        footer { text-align: center; color: #8d6a73; padding: 30px 20px 60px; }
+
+        /* Fade-in on scroll */
+        .reveal { opacity: 0; transform: translateY(14px); transition: opacity 500ms ease, transform 500ms ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Music toggle */
+        .music-toggle {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(183,110,121,0.35);
+            background: linear-gradient(180deg, #fff, #fff6f9);
+            color: #7a5861;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+        }
+        .music-toggle[aria-pressed="true"] { color: var(--rose-500); border-color: rgba(217, 107, 138, 0.5); }
+
+        /* Responsive */
+        @media (max-width: 920px) {
+            .section-inner { grid-template-columns: 1fr; }
+            .section-image { order: -1; height: 220px; }
+            .split { grid-template-columns: 1fr; }
+            .rows .panel { grid-template-columns: 1fr; }
+            .rows .panel .panel-image { height: 200px; }
+        }
+        /* Hour 4 should not reserve an empty image column */
+        .is-split .section-inner { display: block; }
+
+        /* Side cute stickers */
+        .stickers { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+        .sticker {
+            position: absolute;
+            font-size: 22px;
+            opacity: 0.9;
+            filter: drop-shadow(0 8px 18px rgba(217,107,138,0.15));
+            animation: bob 6s ease-in-out infinite;
+        }
+        .sticker.small { font-size: 18px; opacity: 0.8; }
+        .sticker.big { font-size: 26px; }
+        .sticker.s1 { left: 10px; top: 18%; animation-duration: 7.2s; }
+        .sticker.s2 { left: 14px; top: 62%; animation-duration: 6.7s; }
+        .sticker.s3 { right: 12px; top: 26%; animation-duration: 7.6s; }
+        .sticker.s4 { right: 16px; top: 74%; animation-duration: 6.9s; }
+        @keyframes bob { 0% { transform: translateY(0) } 50% { transform: translateY(-8px) rotate(2deg) } 100% { transform: translateY(0) } }
+
+        /* Stickers per section */
+        .section-sticker {
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            font-size: 20px;
+            opacity: 0.9;
+            animation: bob 7s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        /* Click heart bursts */
+        .burst-heart {
+            position: fixed;
+            width: 14px; height: 14px;
+            z-index: 60;
+            pointer-events: none;
+            animation: burst 900ms ease-out forwards;
+            filter: drop-shadow(0 6px 10px rgba(217,107,138,0.25));
+        }
+        @keyframes burst { from { transform: translate(0,0) scale(1); opacity: 1; } to { transform: translate(var(--dx), var(--dy)) scale(1.8); opacity: 0; } }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" aria-label="Progress">
+        <div class="nav-inner">
+            <div class="brand">Our Date Night</div>
+            <div class="dots" role="tablist" aria-label="Sections">
+                <button class="dot-btn" role="tab" aria-controls="hour1" aria-label="Hour One" aria-current="true"></button>
+                <button class="dot-btn" role="tab" aria-controls="hour2" aria-label="Cupcake & Candle (30 min)"></button>
+                <button class="dot-btn" role="tab" aria-controls="hour3" aria-label="Chess (30 min)"></button>
+                <button class="dot-btn" role="tab" aria-controls="hour4" aria-label="Hour Four"></button>
+                <button class="dot-btn" role="tab" aria-controls="hour5" aria-label="Hour Five"></button>
+                <button class="dot-btn" role="tab" aria-controls="hour6" aria-label="Hour Six"></button>
+            </div>
+            <div class="nav-actions">
+                <button id="musicBtn" class="music-toggle" type="button" aria-pressed="false" aria-label="Toggle background music">
+                    <span aria-hidden="true">♪</span>
+                    <span id="musicLabel">Music: Off</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-inner">
+            <h1 class="title">Our 2-Year Anniversary Date Night</h1>
+            <p class="subtitle">Start 6:00 PM PT / 9:00 PM ET</p>
+            <p class="note">Pacific time for me, Eastern for you</p>
+        </div>
+        <div class="hearts" aria-hidden="true" id="hearts"></div>
+        <!-- Side stickers -->
+        <div class="stickers" aria-hidden="true">
+            <div class="sticker s1">💗</div>
+            <div class="sticker s2 small">🕯️</div>
+            <div class="sticker s3 big">🧁</div>
+            <div class="sticker s4">🎀</div>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <!-- Hour One -->
+        <section id="hour1" class="section-card reveal" tabindex="-1">
+            <div class="section-inner">
+                <div class="section-body">
+                    <div class="section-kicker">Hour One — 60 min</div>
+                    <h2 class="section-title"><span class="icon" aria-hidden="true">💞</span>Opening Up</h2>
+                    <div class="section-desc">
+                        <p>We’ll start with the New York Times 36 Questions.</p>
+                        <p>Then we’ll play the image guessing game, where we try to choose what we think the other person would pick from sets of photos.</p>
+                        <p>Finally, we’ll play a couples quiz game from Lovify, to see how well we really know each other.</p>
+                    </div>
+                    <div class="btn-row">
+                        <a class="btn" href="https://www.nytimes.com/2015/01/09/style/modern-love-to-fall-in-love-do-this.html" target="_blank" rel="noopener noreferrer">NYT 36 Questions</a>
+                        <a class="btn" href="https://rootstotable.com/blogs/timber-tastes-tales/know-your-valentine-a-fun-guessing-game-for-couples" target="_blank" rel="noopener noreferrer">Image Guessing Game</a>
+                        <a class="btn" href="https://play.google.com/store/apps/details?id=com.mindsets.lovify" target="_blank" rel="noopener noreferrer">Lovify (couples game)</a>
+                    </div>
+                </div>
+                <div class="section-image" aria-hidden="true">
+                    <img src="./IMG_3296.jpg" alt="Warm, romantic photo for opening up" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Hour Two -->
+        <section id="hour2" class="section-card reveal" tabindex="-1">
+            <div class="section-inner">
+                <div class="section-body">
+                    <div class="section-kicker">30 min</div>
+                    <h2 class="section-title"><span class="icon" aria-hidden="true">🧁</span>Cupcake & Candle</h2>
+                    <div class="section-desc">
+                        <p>We’ll take a little break for something sweet. Something might be arriving at your place.....</p>
+                    </div>
+                </div>
+                <div class="section-image" aria-hidden="true">
+                    <img src="./100_2021.jpg" alt="Cupcakes and candle" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Hour Three -->
+        <section id="hour3" class="section-card reveal" tabindex="-1">
+            <div class="section-inner">
+                <div class="section-body">
+                    <div class="section-kicker">30 min</div>
+                    <h2 class="section-title"><span class="icon" aria-hidden="true">♟️</span>Chess</h2>
+                    <div class="section-desc">
+                        <p>in honor of our first period shenanigans, we’ll play chess!! First to three wins takes the crown</p>
+                    </div>
+                    <div class="btn-row">
+                        <a class="btn" href="https://lichess.org/" target="_blank" rel="noopener noreferrer">Play on Lichess</a>
+                    </div>
+                </div>
+                <div class="section-image" aria-hidden="true">
+                    <img src="./IMG_4590.jpg" alt="Chess pieces on a board" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Hour Four -->
+        <section id="hour4" class="section-card reveal is-split" tabindex="-1">
+            <div class="section-inner">
+                <div class="section-body">
+                    <div class="section-kicker">Hour Four — 30 min + 30 min</div>
+                    <h2 class="section-title"><span class="icon" aria-hidden="true">🛍️</span>Shopping & Honeymoon Planning</h2>
+                    <div class="split">
+                        <div class="panel">
+                            <div class="panel-image">
+                                <img src="./IMG_7369.jpg" alt="Fun shopping mood" />
+                            </div>
+                            <div class="panel-body">
+                                <div class="panel-title"><span aria-hidden="true">🛒</span>A) Virtual Shopping (30 min)</div>
+                                <p>We’ll pick fun gifts and outfits for each other. From Etsy to Shein to Pinterest, we’ll find things that we think would look good on each other.</p>
+                                <div class="btn-row">
+                                    <a class="btn" href="https://www.etsy.com/" target="_blank" rel="noopener noreferrer">Etsy</a>
+                                    <a class="btn" href="https://us.shein.com/" target="_blank" rel="noopener noreferrer">Shein</a>
+                                    <a class="btn" href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer">Pinterest</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-image">
+                                <img src="./IMG_2709.jpg" alt="Dreamy travel scene" />
+                            </div>
+                            <div class="panel-body">
+                                <div class="panel-title"><span aria-hidden="true">🗺️</span>B) Future Honeymoon Planning (30 min)</div>
+                                <p>We’ll dream about our honeymoon—where we’d go, what we’d do, the places we’d stay.</p>
+                                <div class="btn-row">
+                                    <a class="btn" href="https://maps.google.com/" target="_blank" rel="noopener noreferrer">Google Maps</a>
+                                    <a class="btn" href="https://www.airbnb.com/" target="_blank" rel="noopener noreferrer">Airbnb</a>
+                                    <a class="btn" href="https://www.google.com/travel/flights" target="_blank" rel="noopener noreferrer">Google Flights</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hour Five -->
+        <section id="hour5" class="section-card reveal" tabindex="-1">
+            <div class="section-inner">
+                <div class="section-body">
+                    <div class="section-kicker">Hour Five — 60 min</div>
+                    <h2 class="section-title" aria-label="Private time"><span class="icon" aria-hidden="true">📞</span>📱</h2>
+                    <div class="section-desc">
+                        <p>spicccyyy time</p>
+                    </div>
+                </div>
+                <div class="section-image" aria-hidden="true">
+                    <img src="./IMG_7892.jpg" alt="Cozy, private vibe" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Hour Six -->
+        <section id="hour6" class="section-card reveal" tabindex="-1">
+            <div class="section-body">
+                <div class="section-kicker">Hour Six — ~90+ min</div>
+                <h2 class="section-title"><span class="icon" aria-hidden="true">🍽️🎬</span>Dinner & A Movie</h2>
+                <div class="rows" style="grid-template-columns: 1fr;">
+                    <div class="panel">
+                        <div class="panel-image">
+                            <img src="./IMG_0446.jpg" alt="Dinner takeout" />
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-title"><span aria-hidden="true">🍽️</span>Row A — Dinner</div>
+                            <p>We’ll order food for each other—like buying dinner before the movie.</p>
+                            <div class="btn-row">
+                                <a class="btn" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a>
+                                <a class="btn" href="https://www.ubereats.com/" target="_blank" rel="noopener noreferrer">Uber Eats</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-image">
+                            <img src="./IMG_4694.jpg" alt="Cozy movie night" />
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-title"><span aria-hidden="true">🎬</span>Row B — Movie</div>
+                            <p>we'll watch an indian romcom, Befikre — a sweet look at what our future could look like!!</p>
+                            <div class="btn-row">
+                                <a class="btn" href="https://ww1.soap2dayhd.co/" target="_blank" rel="noopener noreferrer">Soap2Day</a>
+                                <a class="btn" href="https://www.teleparty.com/" target="_blank" rel="noopener noreferrer">Watch together (Teleparty)</a>
+                                <a class="btn" href="https://www.scener.com/" target="_blank" rel="noopener noreferrer">Watch together (Scener)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            Built with love, blush tones, and soft corners. Happy 2 years. 💗
+        </footer>
+    </main>
+
+    <!-- Optional local file: place music.mp3 next to this file; JS will also try romantic fallbacks -->
+    <audio id="bgm" preload="none" loop muted crossorigin="anonymous"></audio>
+
+    <script>
+        // Fade-in on scroll
+        const revealEls = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.14 });
+        revealEls.forEach((el) => io.observe(el));
+
+        // Progress dots behavior
+        const sections = ['hour1','hour2','hour3','hour4','hour5','hour6'].map((id) => document.getElementById(id));
+        const dots = Array.from(document.querySelectorAll('.dot-btn'));
+        dots.forEach((btn, idx) => {
+            btn.addEventListener('click', () => {
+                sections[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        const activeByScroll = new IntersectionObserver((entries) => {
+            let topMost = entries
+                .filter((e) => e.isIntersecting)
+                .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+            if (!topMost) return;
+            const activeIdx = sections.findIndex((s) => s.id === topMost.target.id);
+            dots.forEach((d, i) => d.setAttribute('aria-current', i === activeIdx ? 'true' : 'false'));
+        }, { threshold: 0.5 });
+        sections.forEach((s) => activeByScroll.observe(s));
+
+        // Floating hearts in hero
+        const heartsWrap = document.getElementById('hearts');
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function spawnHeart() {
+            if (prefersReduced) return;
+            const h = document.createElement('div');
+            h.className = 'heart';
+            h.style.left = Math.random() * 100 + '%';
+            const dur = 3500 + Math.random() * 2000;
+            h.style.animationDuration = dur + 'ms';
+            h.style.bottom = (Math.random() * 20) + 'px';
+            h.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="color:#f39db3"><path d="M12 21s-6.716-4.323-9.428-7.035C-.262 11.695-.262 7.8 2.572 5.8c2.31-1.64 5.04-.86 6.428.928C10.387 4.94 13.118 4.16 15.428 5.8c2.834 2 2.834 5.895-.001 8.165C18.716 16.677 12 21 12 21z"/></svg>';
+            heartsWrap.appendChild(h);
+            setTimeout(() => h.remove(), dur + 200);
+        }
+        let heartTimer = null;
+        function startHearts() {
+            if (prefersReduced) return;
+            // burst a few
+            for (let i = 0; i < 10; i++) setTimeout(spawnHeart, i * 150);
+            heartTimer = setInterval(spawnHeart, 600);
+        }
+        function stopHearts() { if (heartTimer) clearInterval(heartTimer); }
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) stopHearts(); else startHearts();
+        });
+        startHearts();
+
+        // Music toggle with fallbacks
+        const musicBtn = document.getElementById('musicBtn');
+        const musicLabel = document.getElementById('musicLabel');
+        const audio = document.getElementById('bgm');
+        const musicCandidates = [
+            './music.mp3',
+            'https://cdn.pixabay.com/download/audio/2021/09/30/audio_b0b1bb0e9392.mp3?filename=romantic-piano-ambient-11092.mp3',
+            'https://cdn.pixabay.com/download/audio/2022/01/15/audio_7b6c4eeb8e.mp3?filename=romantic-piano-10977.mp3'
+        ];
+        let currentTrackIndex = -1;
+        function setNextTrack() {
+            if (currentTrackIndex + 1 >= musicCandidates.length) return false;
+            currentTrackIndex += 1;
+            audio.src = musicCandidates[currentTrackIndex];
+            return true;
+        }
+        function ensureTrack() {
+            if (!audio.src) setNextTrack();
+        }
+        audio.addEventListener('error', () => {
+            if (setNextTrack() && musicBtn.getAttribute('aria-pressed') === 'true') {
+                audio.muted = false;
+                audio.play().catch(() => {});
+            } else {
+                musicBtn.setAttribute('aria-pressed', 'false');
+                musicLabel.textContent = 'Music: Off';
+            }
+        });
+        musicBtn.addEventListener('click', async () => {
+            const isOn = musicBtn.getAttribute('aria-pressed') === 'true';
+            if (isOn) {
+                musicBtn.setAttribute('aria-pressed', 'false');
+                musicLabel.textContent = 'Music: Off';
+                audio.pause();
+            } else {
+                musicBtn.setAttribute('aria-pressed', 'true');
+                musicLabel.textContent = 'Music: On';
+                ensureTrack();
+                try {
+                    audio.muted = false;
+                    await audio.play();
+                } catch (e) {
+                    // ignore; error handler will advance track
+                }
+            }
+        });
+
+        // Ensure all external links open in a new tab (defense-in-depth)
+        document.querySelectorAll('a[href^="http"]').forEach((a) => {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener noreferrer');
+        });
+    </script>
+</body>
+</html>
+
+
